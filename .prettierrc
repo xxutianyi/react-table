@@ -1,0 +1,24 @@
+{
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "all",
+    "singleAttributePerLine": false,
+    "htmlWhitespaceSensitivity": "css",
+    "plugins": [
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-tailwindcss",
+        "prettier-plugin-packagejson"
+    ],
+    "tailwindFunctions": ["clsx", "cn"],
+    "tailwindStylesheet": "src/styles.css",
+    "tabWidth": 2,
+    "overrides": [
+        {
+            "files": ".prettierrc",
+            "options": {
+                "parser": "json"
+            }
+        }
+    ]
+}
