@@ -7,6 +7,7 @@ export default defineConfig({
   exports: true,
   sourcemap: true,
   platform: 'browser',
+  css: { inject: true },
   plugins: [
     pluginBabel({
       presets: [reactCompilerPreset()],
