@@ -38,7 +38,7 @@ export function Table<TData extends TableData>({
           <TableHeader>
             <TableRow>
               {tableColumns.map((column, index) => (
-                <TableHead key={index} id={column.index} colSpan={column.colSpan}>
+                <TableHead key={index} id={column.index} colSpan={column.colSpan} style={{ width: column.width }}>
                   {column.titleRender ? column.titleRender() : column.title}
                 </TableHead>
               ))}

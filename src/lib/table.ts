@@ -37,6 +37,7 @@ export type TableColumn<TData extends TableData> = {
   title?: string;
   dataKey?: keyof TData | (keyof TData)[];
   hidden?: boolean;
+  width?: string;
   colSpan?: number;
   filters?: FilterOption[];
   hideable?: boolean;
