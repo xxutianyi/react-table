@@ -1,6 +1,6 @@
 {
   "name": "@winglab/react-table",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react data-table component using shadcn/ui",
   "keywords": [
     "shadcn/ui",

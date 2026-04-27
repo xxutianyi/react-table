@@ -15,7 +15,7 @@ npm install radix-ui nuqs
 
 ```tsx
 // user/index.tsx
-import { ColumnsDef, DataTable } from '@winglab/react-table';
+import { ColumnsDef, RequestTable } from '@winglab/react-table';
 
 export default function UsersPage() {
     const columns = ColumnsDef<UserType>([
@@ -62,7 +62,7 @@ export default function UsersPage() {
 
     return (
         <Layout>
-            <DataTable
+            <RequestTable
                 columns={columns}
                 request={async (params) => {
                     return { data, total };
