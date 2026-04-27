@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
-import type { TableApi, TableColumn, TableData } from '@/lib/table';
+import type { RequestTableApi, TableColumn, TableData } from '@/lib/table';
 import { cn } from '@/lib/utils';
 import { CheckIcon, PlusCircleIcon } from 'lucide-react';
 
 export type DataTableFilterProps<TData extends TableData> = {
-  table: TableApi<TData>;
+  table: RequestTableApi<TData>;
   column: TableColumn<TData>;
 };
 

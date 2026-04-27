@@ -1,7 +1,7 @@
 import { Checkbox } from '@/components/ui/checkbox';
-import type { TableApi, TableData } from '@/lib/table';
+import type { RequestTableApi, TableApi, TableData } from '@/lib/table';
 
-export function selectColumn<TData extends TableData>(table: TableApi<TData>) {
+export function selectColumn<TData extends TableData>(table: TableApi<TData> | RequestTableApi<TData>) {
   return {
     index: 'select',
     titleRender: () => (

@@ -11,12 +11,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import type { TableApi, TableData } from '@/lib/table';
+import type { RequestTableApi, TableData } from '@/lib/table';
 import { Settings2Icon, XIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 export type DataTableToolbarProps<TData extends TableData> = {
-  table: TableApi<TData>;
+  table: RequestTableApi<TData>;
   actions?: ReactNode;
   showSearch?: boolean;
 };

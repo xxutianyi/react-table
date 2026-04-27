@@ -2,41 +2,30 @@
 
 import { selectColumn } from '@/components/data-table-column';
 import { DataTableFooter } from '@/components/data-table-footer';
-import { DataTableTitle } from '@/components/data-table-title';
-import { DataTableToolbar } from '@/components/data-table-toolbar';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { TableBody, TableCell, TableHead, TableHeader, TableRow, Table as UITable } from '@/components/ui/table';
 import { useTable } from '@/hooks/use-table';
-import type { TableColumn, TableData, TableRequest } from '@/lib/table';
+import type { TableColumn, TableData } from '@/lib/table';
 import { cn } from '@/lib/utils';
 import _ from 'lodash';
-import type { ReactNode } from 'react';
 
-export type DataTableProps<TData extends TableData> = {
+export type TableProps<TData extends TableData> = {
   rowKey?: string;
-  columns: TableColumn<TData>[];
   data?: TData[];
-  request?: TableRequest<TData>;
+  columns: TableColumn<TData>[];
   onSelectChange?: (rowKeys: string[]) => void;
-  toolbarAction?: ReactNode;
-  showSearchInput?: boolean;
   pageSizeOptions?: number[];
-  saveStateToQuery?: boolean;
   className?: string;
 };
 
-export function DataTable<TData extends TableData>({
+export function Table<TData extends TableData>({
   rowKey = 'id',
-  columns,
   data,
-  request,
+  columns,
   onSelectChange,
-  toolbarAction,
-  showSearchInput = true,
   pageSizeOptions = [10, 25, 50],
-  saveStateToQuery,
   className,
-}: DataTableProps<TData>) {
-  const table = useTable({ rowKey, columns, data, request, onSelectChange, saveStateToQuery });
+}: TableProps<TData>) {
+  const table = useTable({ rowKey, columns, data, onSelectChange });
 
   const tableColumns: TableColumn<TData>[] = table.shouldAddSelectColumn()
     ? [selectColumn(table), ...table.getColumns()]
@@ -44,15 +33,13 @@ export function DataTable<TData extends TableData>({
 
   return (
     <div className={cn(className, 'w-full space-y-4')}>
-      <DataTableToolbar table={table} actions={toolbarAction} showSearch={showSearchInput} />
-
       <div className="overflow-hidden rounded-3xl border">
-        <Table className="">
+        <UITable>
           <TableHeader>
             <TableRow>
               {tableColumns.map((column, index) => (
                 <TableHead key={index} id={column.index} colSpan={column.colSpan}>
-                  <DataTableTitle column={column} table={table} />
+                  {column.titleRender ? column.titleRender() : column.title}
                 </TableHead>
               ))}
             </TableRow>
@@ -77,7 +64,7 @@ export function DataTable<TData extends TableData>({
               </TableRow>
             )}
           </TableBody>
-        </Table>
+        </UITable>
       </div>
 
       <DataTableFooter table={table} sizeOptions={pageSizeOptions} />

@@ -2,11 +2,11 @@
 
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import type { TableApi, TableData } from '@/lib/table';
+import type { RequestTableApi, TableApi, TableData } from '@/lib/table';
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from 'lucide-react';
 
 export type DataTableFooterProps<TData extends TableData> = {
-  table: TableApi<TData>;
+  table: TableApi<TData> | RequestTableApi<TData>;
   sizeOptions: number[];
 };
 

@@ -8,11 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import type { TableApi, TableColumn, TableData } from '@/lib/table';
+import type { RequestTableApi, TableColumn, TableData } from '@/lib/table';
 import { ArrowDownIcon, ArrowUpIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react';
 
 export type DataTableTitleProps<TData extends TableData> = {
-  table: TableApi<TData>;
+  table: RequestTableApi<TData>;
   column: TableColumn<TData>;
 };
 

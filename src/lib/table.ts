@@ -46,34 +46,38 @@ export type TableColumn<TData extends TableData> = {
   tableRowRender?: (data: TData) => ReactNode;
 };
 
-export type TableApi<TData extends TableData> = {
+export interface TableApi<TData extends TableData> {
   getData: () => TData[];
   getPage: () => Page;
   getSize: () => Size;
-  getSearch: () => Search;
   getPageRows: () => number;
   getTotalPage: () => number;
   getColumns: () => TableColumn<TData>[];
   getHideableColumns: () => TableColumn<TData>[];
-  getFilterableColumns: () => TableColumn<TData>[];
   getSelectedRows: () => string[];
   getRowSelectedState: (dataItem: TData) => SelectState;
   getRowSelectedAllState: () => SelectState;
-  getColumnSortState: (column: ColumnIndex) => SortState;
-  getFilteredState: (column: ColumnIndex) => FilterState;
-  getFilteredStateOption: (column: TableColumn<TData>) => FilterOption;
 
   setNewPage: (page: Page) => void;
   setNewSize: (size: Size) => void;
-  setNewSearch: (search: Search) => void;
-  setSortState: (column: ColumnIndex, sort: SortState) => void;
   setColumnVisibleState: (column: ColumnIndex, state: boolean) => void;
-  setFilterState: (column: ColumnIndex, filter: FilterState) => void;
   setRowSelectedState: (dataItem: TData, select: SelectState) => void;
   setRowSelectedAllState: (select: SelectState) => void;
 
   shouldAddSelectColumn: () => boolean;
-};
+}
+
+export interface RequestTableApi<TData extends TableData> extends TableApi<TData> {
+  getSearch: () => Search;
+  getFilterableColumns: () => TableColumn<TData>[];
+  getColumnSortState: (column: ColumnIndex) => SortState;
+  getFilteredState: (column: ColumnIndex) => FilterState;
+  getFilteredStateOption: (column: TableColumn<TData>) => FilterOption;
+
+  setNewSearch: (search: Search) => void;
+  setSortState: (column: ColumnIndex, sort: SortState) => void;
+  setFilterState: (column: ColumnIndex, filter: FilterState) => void;
+}
 
 export function ColumnsDef<TData extends TableData = TableData>(columns: ColumnDef<TData>[]) {
   function columnKey(column: ColumnDef<TData>) {
